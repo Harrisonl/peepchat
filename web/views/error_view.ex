@@ -5,8 +5,14 @@ defmodule Peepchat.ErrorView do
     %{errors: %{detail: "Page not found"}}
   end
 
+  def render("401.json", _assigns) do
+    %{title: "Unauthorized", code: 401}
+    |> JaSerializer.ErrorSerializer.format
+  end
+
   def render("500.json", _assigns) do
-    %{errors: %{detail: "Server internal error"}}
+    %{title: "Internal Server Error", code: 500}
+    |> JaSerializer.ErrorSerializer.format
   end
 
   # In case no render clause matches or no
