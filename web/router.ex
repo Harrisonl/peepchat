@@ -8,6 +8,7 @@ defmodule Peepchat.Router do
   scope "/api", Peepchat do
     pipe_through :api
 
+    post "register", RegistrationController, :create
     resources "session", SessionController, only: [:index]
   end
 end
